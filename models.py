@@ -3,6 +3,10 @@ class Person:
         self.name = name
         self.email = email
 
+    def __eq__(self, other):
+        return self.name == other.name and \
+                self.email == other.email
+
 class SecretSantaPair:
     def __init__(self, giver, receiver):
         self.giver = giver
