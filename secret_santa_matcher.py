@@ -11,6 +11,6 @@ def match_pairs(people_participating):
     pool = randomize_pool(people_participating)
     pool_size = len(pool)
 
-    return [SecretSantaPair(pool[i % pool_size], \
-                            pool[(i + 1) % pool_size]) \
+    return [SecretSantaPair(pool[i],
+                            pool[(i + 1) % pool_size])
                             for i in range(pool_size)]
