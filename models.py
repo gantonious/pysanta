@@ -7,6 +7,10 @@ class Person:
         return self.name == other.name and \
                 self.email == other.email
 
+    def __hash__(self):
+        return hash(self.name) ^ \
+                hash(self.email)
+
 class SecretSantaPair:
     def __init__(self, giver, receiver):
         self.giver = giver
