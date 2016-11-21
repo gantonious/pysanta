@@ -1,11 +1,8 @@
 from email_service import *
+from argparse import ArgumentParser
 from models import *
 from secret_santa_matcher import *
 from person_loader import *
-
-# message = EmailMessage("gaflight95@gmail.com", "test@gmail.com", "Testing", "Testing12345")
-# service = EmailService()
-# service.send_email(message)
 
 def print_pairs(pairs):
     print("Pairs:")
@@ -13,6 +10,11 @@ def print_pairs(pairs):
     for pair in pairs:
         print("Sender: {}, Receiver: {}".format(pair.giver.name, pair.receiver.name))
 
-persons = load_people_from_csv("participating.csv")
-pairs = match_pairs(persons)
-print_pairs(pairs)
+if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("-f", "--file", help="CSV with Secret Sanata participants")
+    args = parser.parse_args()
+
+    persons = load_people_from_csv(args.file)
+    pairs = match_pairs(persons)
+    print_pairs(pairs)
